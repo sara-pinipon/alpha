@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "131624959394",
+    "firebase_url": "https://i8-database.firebaseio.com",
+    "project_id": "i8-database",
+    "storage_bucket": "i8-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131624959394:android:7c365cda84f1d3053446fb",
+        "android_client_info": {
+          "package_name": "i8.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131624959394-o6l2me5cptuc1veucea9baapssril98j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxcLpgpNy4WMx6W_O3qOd0rmQjQ6RURdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131624959394-o6l2me5cptuc1veucea9baapssril98j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
