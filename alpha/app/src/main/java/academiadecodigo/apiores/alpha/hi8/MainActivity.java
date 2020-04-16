@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        sexChoice();
+        //sexChoice();
 
         queuecard = new ArrayList<UserCard>();
         populateArray();
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 if(dataSnapshot.getKey().equals(user.getUid())) {
                     sex = "Male";
                     oppositeSex = "Female";
-                    getOppositeChoice();
+                    //getOppositeChoice();
                 }
             }
 
@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                 if(dataSnapshot.getKey().equals(user.getUid())) {
                     sex = "Female";
                     oppositeSex = "Male";
-                    getOppositeChoice();
+                    //getOppositeChoice();
                 }
             }
 

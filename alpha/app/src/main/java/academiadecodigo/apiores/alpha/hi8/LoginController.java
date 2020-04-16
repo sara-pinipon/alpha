@@ -19,7 +19,7 @@ public class LoginController extends AppCompatActivity {
 
         loginButton = (Button) findViewById(R.id.login);
         registerButton = (Button) findViewById(R.id.register);
-
+        System.out.println("___________________aaaaaaa_________________________");
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
