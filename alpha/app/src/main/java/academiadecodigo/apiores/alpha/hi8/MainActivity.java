@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
         queuecard = new ArrayList<UserCard>();
 
 
+
+
+
+
         arrayAdapter = new ArrayUserCard(this, R.layout.item, queuecard);
 
         SwipeFlingAdapterView container = (SwipeFlingAdapterView) findViewById(R.id.frame);

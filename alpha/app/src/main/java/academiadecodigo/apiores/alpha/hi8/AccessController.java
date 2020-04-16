@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.common.util.JsonUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,22 +24,31 @@ public class AccessController extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
+
         firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                final FirebaseUser user = firebaseAuth.getCurrentUser();
+
+
+                System.out.println("--------------------------"+user + "------------------------------");
+
+
+                /*
                 if (user != null){
                     Intent intent = new Intent(AccessController.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                     return;
                 }
+                */
             }
         };
 
@@ -53,13 +63,31 @@ public class AccessController extends AppCompatActivity {
             public void onClick(View view) {
                 final String email = emailButton.getText().toString();
                 final String password = passwordButton.getText().toString();
-                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(AccessController.this, new OnCompleteListener<AuthResult>() {
+                Task asd = mAuth.signInWithEmailAndPassword(email, password);
+
+                System.out.println("---------------------------------" + asd + "---------------------------------------------------");
+
+                asd.addOnCompleteListener(AccessController.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        /*
                         if(!task.isSuccessful()){
                             Toast.makeText(AccessController.this, "sign in error", Toast.LENGTH_SHORT).show();
                         }
+                        */
+
+                        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<aaaaaaaaaaaaaaaaaaa>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
+                        Intent intent = new Intent(AccessController.this, MainActivity.class);
+                        startActivity(intent);
+                        System.out.println("-----<<<-<-<-<<-<--<-<-<-<---_>>_<->-<_>_>-<-<-->_>-<->__>->_");
+                        finish();
+                        return;
+
+
                     }
+
                 });
             }
         });

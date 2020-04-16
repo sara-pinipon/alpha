@@ -14,6 +14,7 @@ public class LoginController extends AppCompatActivity {
     private Button loginButton, registerButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_choose_login_registration);
