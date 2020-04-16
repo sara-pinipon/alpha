@@ -25,12 +25,12 @@ import java.util.Map;
 
 public class NewClientController extends AppCompatActivity {
 
-    private Button mRegister;
-    private EditText mEmail, mPassword, mName;
+    private Button registerButton;
+    private EditText userEmail, userPassword, userName;
 
-    private RadioGroup mRadioGroup;
+    private RadioGroup gender;
 
-    private FirebaseAuth mAuth;
+    private FirebaseAuth authentication;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
 
     @Override
@@ -38,11 +38,15 @@ public class NewClientController extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        mAuth = FirebaseAuth.getInstance();
+        authentication = FirebaseAuth.getInstance();
+
+        //start fire base
         firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NotNull FirebaseAuth firebaseAuth) {
+
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
                 if (user !=null){
                     Intent intent = new Intent(NewClientController.this, MainActivity.class);
                     startActivity(intent);
@@ -53,41 +57,50 @@ public class NewClientController extends AppCompatActivity {
         };
 
 
-        mRegister = (Button) findViewById(R.id.register);
+        registerButton = (Button) findViewById(R.id.register);
 
-        mEmail = (EditText) findViewById(R.id.email);
-        mPassword = (EditText) findViewById(R.id.password);
-        mName = (EditText) findViewById(R.id.name);
+        userEmail = (EditText) findViewById(R.id.email);
+        userPassword = (EditText) findViewById(R.id.password);
+        userName = (EditText) findViewById(R.id.name);
 
-        mRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        gender = (RadioGroup) findViewById(R.id.radioGroup);
 
-        mRegister.setOnClickListener(new View.OnClickListener() {
+        //set register button
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int selectId = mRadioGroup.getCheckedRadioButtonId();
+
+                int selectId = gender.getCheckedRadioButtonId();
 
                 final RadioButton radioButton = (RadioButton) findViewById(selectId);
 
-                if(radioButton.getText() == null){
+                if(radioButton.getText() == null) {
                     return;
                 }
 
-                final String email = mEmail.getText().toString();
-                final String password = mPassword.getText().toString();
-                final String name = mName.getText().toString();
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(NewClientController.this, new OnCompleteListener<AuthResult>() {
+                final String email = userEmail.getText().toString();
+                final String password = userPassword.getText().toString();
+                final String name = userName.getText().toString();
+
+                authentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener(NewClientController.this, new OnCompleteListener<AuthResult>() {
+
                     @Override
                     public void onComplete(@NotNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
+
+                        if (!task.isSuccessful()) {
                             Toast.makeText(NewClientController.this, "sign up error", Toast.LENGTH_SHORT).show();
-                        }else{
-                            String userId = mAuth.getCurrentUser().getUid();
+
+                        } else {
+                            String userId = authentication.getCurrentUser().getUid();
                             DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
                             Map userInfo = new HashMap<>();
+
                             userInfo.put("name", name);
                             userInfo.put("sex", radioButton.getText().toString());
                             userInfo.put("profileImageUrl", "default");
+
                             currentUserDb.updateChildren(userInfo);
+
                         }
                     }
                 });
@@ -95,15 +108,16 @@ public class NewClientController extends AppCompatActivity {
         });
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(firebaseAuthStateListener);
+        authentication.addAuthStateListener(firebaseAuthStateListener);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mAuth.removeAuthStateListener(firebaseAuthStateListener);
+        authentication.removeAuthStateListener(firebaseAuthStateListener);
     }
 }
