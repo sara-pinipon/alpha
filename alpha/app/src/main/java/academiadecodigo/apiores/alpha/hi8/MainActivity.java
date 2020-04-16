@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,14 +23,22 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 
 import java.util.ArrayList;
+import java.util.List;
+
+import academiadecodigo.apiores.alpha.hi8.userCards.ArrayUserCard;
+import academiadecodigo.apiores.alpha.hi8.userCards.UserCard;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<String> listOfCards;
-    private ArrayAdapter<String> arrayAdapter;
+    private UserCard[] userCard;
+    private ArrayUserCard arrayAdapter;
     private int i;
 
     private FirebaseAuth auth;
+    private String currentUserId;
+    private DatabaseReference usersDatabase;
+    private ListView listView;
+    private List<UserCard> queuecard;
 
     private String sex;
     private String oppositeSex;
@@ -44,17 +53,10 @@ public class MainActivity extends AppCompatActivity {
         sexChoice();
 
 
-        listOfCards = new ArrayList<>();
+        queuecard = new ArrayList<UserCard>();
 
 
-        listOfCards.add("sara");
-        listOfCards.add("bernardo");
-        listOfCards.add("xavi");
-        listOfCards.add("diogo");
-        listOfCards.add("máquina");
-
-
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.helloText, listOfCards);
+        arrayAdapter = new ArrayUserCard(this, R.layout.item, queuecard);
 
         SwipeFlingAdapterView container = (SwipeFlingAdapterView) findViewById(R.id.frame);
 
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             public void removeFirstObjectInAdapter() {
 
                 Log.d("LIST", "removed an object!");
-                listOfCards.remove(0);
+                queuecard.remove(0);
                 arrayAdapter.notifyDataSetChanged();
 
             }
@@ -84,11 +86,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
-
-                listOfCards.add("XML ".concat(String.valueOf(i)));
-                arrayAdapter.notifyDataSetChanged();
-                Log.d("LIST", "notified");
-                i++;
 
             }
 
@@ -118,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         databaseMale.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
                 if(dataSnapshot.getKey().equals(user.getUid())) {
                     sex = "Male";
                     oppositeSex = "Female";
@@ -178,9 +176,13 @@ public class MainActivity extends AppCompatActivity {
         databaseOpposite.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-               if(dataSnapshot.exists()) {
-                   listOfCards.add(dataSnapshot.child("name").getValue().toString());
-                   arrayAdapter.notifyDataSetChanged();
+
+                if(dataSnapshot.exists()) {
+
+                    UserCard userCard = new UserCard(dataSnapshot.getKey(), dataSnapshot.child("name").getKey().toString());
+
+                    queuecard.add(userCard);
+                    arrayAdapter.notifyDataSetChanged();
                }
             }
 

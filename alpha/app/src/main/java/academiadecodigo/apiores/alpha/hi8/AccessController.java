@@ -33,7 +33,7 @@ public class AccessController extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if (user !=null){
+                if (user != null){
                     Intent intent = new Intent(AccessController.this, MainActivity.class);
                     startActivity(intent);
                     finish();
