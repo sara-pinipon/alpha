@@ -43,6 +43,25 @@ public class MainActivity extends AppCompatActivity {
     private String sex;
     private String oppositeSex;
 
+
+    private void populateArray() {
+        UserCard sara = new UserCard("1", "");
+        UserCard diogo = new UserCard("2", "");
+        UserCard bernardo = new UserCard("3", "");
+        UserCard paulo = new UserCard("4", "");
+        UserCard xavier = new UserCard("5", "");
+        UserCard soraia = new UserCard("6", "");
+        UserCard jojo = new UserCard("8", "");
+        queuecard.add(sara);
+        queuecard.add(diogo);
+        queuecard.add(bernardo);
+        queuecard.add(paulo);
+        queuecard.add(xavier);
+        queuecard.add(soraia);
+        queuecard.add(jojo);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,13 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
         sexChoice();
 
-
         queuecard = new ArrayList<UserCard>();
-
-
-
-
-
+        populateArray();
 
         arrayAdapter = new ArrayUserCard(this, R.layout.item, queuecard);
 
@@ -90,12 +104,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
-
             }
 
             @Override
             public void onScroll(float scrollProgressPercent) {
-
             }
         });
 

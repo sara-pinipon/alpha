@@ -60,7 +60,7 @@ public class NewClientController extends AppCompatActivity {
             }
         };
 
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------buttaaaaaaaa---------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
         registerButton = (Button) findViewById(R.id.register);
         userEmail = (EditText) findViewById(R.id.email);
         userPassword = (EditText) findViewById(R.id.password);
@@ -71,7 +71,6 @@ public class NewClientController extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------resgister---------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
                 int selectId = gender.getCheckedRadioButtonId();
 
@@ -79,31 +78,24 @@ public class NewClientController extends AppCompatActivity {
 
 
                 if(radioButton.getText() == null) {
-                    System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------null---------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
                     return;
                 }
-                System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------resgister antes---------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
                 final String email = userEmail.getText().toString();
                 final String password = userPassword.getText().toString();
                 final String name = userName.getText().toString();
-                System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------resgister depois " + email + " " + password + " " + name +"---------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
 
                 authentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener(NewClientController.this, new OnCompleteListener<AuthResult>() {
 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        System.out.println("----------------" + task + "----------------------------");
-                        /*
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(NewClientController.this, "sign up error", Toast.LENGTH_SHORT).show();
 
-                        } else {
-                     */
 
-                        System.out.println("______________________________________--current User "+authentication.getCurrentUser());
 
                         String userId = authentication.getCurrentUser().getUid();
-                        System.out.println("----------------------------------------------1111111----------------------");
+
 
                             DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
                             Map userInfo = new HashMap<>();
