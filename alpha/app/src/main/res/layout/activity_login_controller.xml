@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="academiadecodigo.apiores.alpha.hi8.MainActivity"
+    tools:context=".LoginController"
     android:orientation="vertical"
     android:background="@color/red2"
-    >
 
+    >
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="228dp"
@@ -19,6 +19,7 @@
 
 
     <Button
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="login"
@@ -28,9 +29,11 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="100dp"
         android:textColor="@color/red2"
-        android:background="@drawable/button_bg_rounded_corners"/>
+        android:background="@drawable/button_bg_rounded_corners"
+        />
 
     <Button
+
         android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,6 +41,9 @@
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
         android:textColor="@color/red2"
-        android:background="@drawable/button_bg_rounded_corners"/>
+        android:background="@drawable/button_bg_rounded_corners"
+
+        />
+
 
 </LinearLayout>
