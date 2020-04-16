@@ -9,6 +9,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.annotations.NotNull;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,11 +44,11 @@ public class NewClientController extends AppCompatActivity {
         //start fire base
         firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
-            public void onAuthStateChanged(@NotNull FirebaseAuth firebaseAuth) {
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                if (user !=null){
+                if (user != null){
                     Intent intent = new Intent(NewClientController.this, MainActivity.class);
                     startActivity(intent);
                     finish();
@@ -58,11 +59,9 @@ public class NewClientController extends AppCompatActivity {
 
 
         registerButton = (Button) findViewById(R.id.register);
-
         userEmail = (EditText) findViewById(R.id.email);
         userPassword = (EditText) findViewById(R.id.password);
         userName = (EditText) findViewById(R.id.name);
-
         gender = (RadioGroup) findViewById(R.id.radioGroup);
 
         //set register button
@@ -74,6 +73,7 @@ public class NewClientController extends AppCompatActivity {
 
                 final RadioButton radioButton = (RadioButton) findViewById(selectId);
 
+                
                 if(radioButton.getText() == null) {
                     return;
                 }
@@ -85,7 +85,7 @@ public class NewClientController extends AppCompatActivity {
                 authentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener(NewClientController.this, new OnCompleteListener<AuthResult>() {
 
                     @Override
-                    public void onComplete(@NotNull Task<AuthResult> task) {
+                    public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (!task.isSuccessful()) {
                             Toast.makeText(NewClientController.this, "sign up error", Toast.LENGTH_SHORT).show();

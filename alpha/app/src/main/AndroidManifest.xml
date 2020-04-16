@@ -2,23 +2,32 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="academiadecodigo.apiores.alpha.hi8">
 
+    <uses-permission android:name="android.permission.RED_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
+        android:icon="@mipmap/image"
 
         android:label="@string/app_name"
 
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AccessController" />
-        <activity android:name=".ProfileController" />
-        <activity android:name=".LoginController" />
-        <activity android:name=".MainActivity">
+        
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".LoginController" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NewClientController"/>
+        <activity android:name=".AccessController"/>
+        <activity android:name=".ProfileController"/>
+        <activity android:name=".h8.MatchController" />
+        <activity android:name=".chat.ChatController"/>
     </application>
 
 </manifest>
+
+

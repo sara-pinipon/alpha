@@ -18,8 +18,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class AccessController extends AppCompatActivity {
 
-    private Button mLogin;
-    private EditText mEmail, mPassword;
+    private Button loginButton;
+    private EditText emailButton, passwordButton;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
@@ -43,16 +43,16 @@ public class AccessController extends AppCompatActivity {
         };
 
 
-        mLogin = (Button) findViewById(R.id.login);
+        loginButton = (Button) findViewById(R.id.login);
 
-        mEmail = (EditText) findViewById(R.id.email);
-        mPassword = (EditText) findViewById(R.id.password);
+        emailButton = (EditText) findViewById(R.id.email);
+        passwordButton = (EditText) findViewById(R.id.password);
 
-        mLogin.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String email = mEmail.getText().toString();
-                final String password = mPassword.getText().toString();
+                final String email = emailButton.getText().toString();
+                final String password = passwordButton.getText().toString();
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(AccessController.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
