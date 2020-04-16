@@ -1,32 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="academiadecodigo.apiores.alpha.hi8.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/red2">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="228dp"
+        android:layout_height="349dp"
+        android:layout_gravity="center"
+        app:srcCompat="@mipmap/Logo_transparente"
+        android:theme="@style/AppTheme"
+        android:singleLine="true"
+        />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="name"
-        android:id="@+id/name"/>
+        android:id="@+id/name"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:textColorHint="@color/white"/>
+
+
 
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/radioGroup">
+        android:id="@+id/radioGroup"
+        android:checked="true"
+        app:buttonTint="@color/white"
+        >
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male"/>
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:text="Male"
+            android:textColor="@color/white"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Female" />
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:text="Female"
+            android:textColor="@color/white"/>
 
     </RadioGroup>
 
@@ -34,15 +60,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="email"
-        android:id="@+id/email"/>
+        android:id="@+id/email"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:textColorHint="@color/white"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="password"
-        android:id="@+id/password"/>
-    <Button
-        android:layout_width="match_parent"
+        android:id="@+id/password"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:textColorHint="@color/white"/>
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/register"/>
+        android:layout_gravity="center"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="40dp"
+        android:text="SOON"
+        android:textColor="@color/white" />
 </LinearLayout>

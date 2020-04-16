@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">(H)i8</string>
+    <color name="red1">#940000</color>
+    <color name="red2">#bc0000</color>
+    <color name="white">#ffffff</color>
+
 </resources>
