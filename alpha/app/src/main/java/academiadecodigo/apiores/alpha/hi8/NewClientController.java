@@ -98,19 +98,21 @@ public class NewClientController extends AppCompatActivity {
                             Toast.makeText(NewClientController.this, "sign up error", Toast.LENGTH_SHORT).show();
 
                         } else {
+                     */
 
-                         */
-                        //String userId = authentication.getCurrentUser().getUid();
+                        System.out.println("______________________________________--current User "+authentication.getCurrentUser());
+
+                        String userId = authentication.getCurrentUser().getUid();
                         System.out.println("----------------------------------------------1111111----------------------");
 
-                            //DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
+                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
                             Map userInfo = new HashMap<>();
 
                             userInfo.put("name", name);
                             userInfo.put("sex", radioButton.getText().toString());
                             userInfo.put("profileImageUrl", "default");
 
-                            //currentUserDb.updateChildren(userInfo);
+                            currentUserDb.updateChildren(userInfo);
                         System.out.println("------------------------22222222---------------------------");
                         //}
 

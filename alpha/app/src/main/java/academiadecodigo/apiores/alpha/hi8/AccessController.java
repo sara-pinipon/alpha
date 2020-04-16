@@ -22,6 +22,8 @@ public class AccessController extends AppCompatActivity {
     private Button loginButton;
     private EditText emailButton, passwordButton;
 
+
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
 
@@ -36,10 +38,6 @@ public class AccessController extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = firebaseAuth.getCurrentUser();
-
-
-                System.out.println("--------------------------"+user + "------------------------------");
-
 
                 /*
                 if (user != null){
@@ -63,33 +61,25 @@ public class AccessController extends AppCompatActivity {
             public void onClick(View view) {
                 final String email = emailButton.getText().toString();
                 final String password = passwordButton.getText().toString();
-                Task asd = mAuth.signInWithEmailAndPassword(email, password);
-
-                System.out.println("---------------------------------" + asd + "---------------------------------------------------");
-
-                asd.addOnCompleteListener(AccessController.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                        /*
-                        if(!task.isSuccessful()){
-                            Toast.makeText(AccessController.this, "sign in error", Toast.LENGTH_SHORT).show();
-                        }
-                        */
-
-                        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<aaaaaaaaaaaaaaaaaaa>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-
-                        Intent intent = new Intent(AccessController.this, MainActivity.class);
-                        startActivity(intent);
-                        System.out.println("-----<<<-<-<-<<-<--<-<-<-<---_>>_<->-<_>_>-<-<-->_>-<->__>->_");
-                        finish();
-                        return;
 
 
-                    }
 
-                });
-            }
+                if(!email.equals("admin") || !password.equals("admin")){
+                    Toast.makeText(AccessController.this, "sign in error", Toast.LENGTH_SHORT).show();
+                    System.out.println("-----------------------------ifffff_________________________________");
+                    return;
+                }
+
+                System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<aaaaaaaaaaaaaaaaaaa>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
+                Intent intent = new Intent(AccessController.this, MainActivity.class);
+                startActivity(intent);
+                System.out.println("-----<<<-<-<-<<-<--<-<-<-<---_>>_<->-<_>_>-<-<-->_>-<->__>->_");
+                finish();
+                return;
+
+
+        }
         });
     }
 

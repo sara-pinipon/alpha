@@ -10,6 +10,7 @@ public class UserCard {
         this.name = name;
     }
 
+
     public String getName() {
         return name;
     }
