@@ -73,7 +73,7 @@ public class NewClientController extends AppCompatActivity {
 
                 final RadioButton radioButton = (RadioButton) findViewById(selectId);
 
-                
+
                 if(radioButton.getText() == null) {
                     return;
                 }

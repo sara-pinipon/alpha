@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class LoginController extends AppCompatActivity {
 
@@ -13,6 +15,7 @@ public class LoginController extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_choose_login_registration);
 
         loginButton = (Button) findViewById(R.id.login);

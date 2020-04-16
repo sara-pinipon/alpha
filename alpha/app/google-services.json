@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "131624959394",
-    "firebase_url": "https://i8-database.firebaseio.com",
-    "project_id": "i8-database",
-    "storage_bucket": "i8-database.appspot.com"
+    "project_number": "336452711489",
+    "firebase_url": "https://hi8database.firebaseio.com",
+    "project_id": "hi8database",
+    "storage_bucket": "hi8database.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:131624959394:android:7c365cda84f1d3053446fb",
+        "mobilesdk_app_id": "1:336452711489:android:073a28d341e955833b82c0",
         "android_client_info": {
           "package_name": "academiadecodigo.apiores.alpha.hi8"
         }
       },
       "oauth_client": [
         {
-          "client_id": "131624959394-o6l2me5cptuc1veucea9baapssril98j.apps.googleusercontent.com",
+          "client_id": "336452711489-q5uf8ebo3hk2c95o9ddjs5bj9cgijr14.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDxcLpgpNy4WMx6W_O3qOd0rmQjQ6RURdM"
+          "current_key": "AIzaSyA4mYeeKz95_MEL8qxeKL-vsyCx38oX6C4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "131624959394-o6l2me5cptuc1veucea9baapssril98j.apps.googleusercontent.com",
+              "client_id": "336452711489-q5uf8ebo3hk2c95o9ddjs5bj9cgijr14.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
