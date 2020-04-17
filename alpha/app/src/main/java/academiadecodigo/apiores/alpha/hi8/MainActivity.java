@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
         UserCard claudia = new UserCard("4", "claudia",20);
         UserCard xavier = new UserCard("22", "xavier",21);
         UserCard paulo = new UserCard("15", "paulo",22);
-
+        UserCard last = new UserCard("15", "last",23);
+        UserCard last1 = new UserCard("15", "last1",24);
 
         queuecard.add(jojo);
         queuecard.add(beruno);
@@ -95,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
         queuecard.add(claudia);
         queuecard.add(xavier);
         queuecard.add(paulo);
-
-
+        queuecard.add(last);
+        queuecard.add(last1);
 
 
         for (int i = 0; i < 23; i++){
@@ -126,8 +127,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void removeFirstObjectInAdapter() {
 
+
                 Log.d("LIST", "removed an object!");
-                queuecard.remove(0);
+
+                if (arrayAdapter.getNum() < 23) {
+                    queuecard.remove(0);
+                }
+
+
                 arrayAdapter.notifyDataSetChanged();
 
             }

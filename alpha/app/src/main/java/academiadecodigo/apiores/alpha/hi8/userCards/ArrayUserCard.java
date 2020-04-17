@@ -41,8 +41,13 @@ public class ArrayUserCard extends ArrayAdapter<UserCard> {
 
         ImageView userImage = (ImageView) convertView.findViewById(R.id.image);
 
+        if (num > 22) {
+            userImage.setImageResource(R.mipmap.image23);
+            return convertView;
+        } 
 
         userImage.setImageResource(R.mipmap.image + num);
+
 
 
         return convertView;
@@ -50,5 +55,9 @@ public class ArrayUserCard extends ArrayAdapter<UserCard> {
 
     public void setNum() {
         this.num++;
+    }
+
+    public int getNum(){
+        return num;
     }
 }
