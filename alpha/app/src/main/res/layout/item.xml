@@ -8,23 +8,22 @@
 
     android:paddingBottom="20sp"
     android:paddingTop="20sp"
-    android:paddingRight="40sp"
-    android:paddingLeft="40sp"
+    android:paddingRight="60dp"
+    android:paddingLeft="60dp"
     android:outlineProvider="bounds"
     android:clipToPadding="false">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:cardCornerRadius="5dp"
-        android:elevation="3dp"
+
+
+
         android:id="@+id/cardView">
 
         <FrameLayout
-            android:layout_width="350dp"
-            android:layout_height="450dp"
-            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             >
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -32,18 +31,6 @@
                 android:layout_height="match_parent"
                 android:id="@+id/image"
                 />
-
-
-            <TextView
-                android:id="@+id/helloText"
-                android:textSize="40sp"
-                android:textColor="@android:color/white"
-                android:background="#E339"
-                android:gravity="center"
-                tools:text="hello"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
 
         </FrameLayout>
 

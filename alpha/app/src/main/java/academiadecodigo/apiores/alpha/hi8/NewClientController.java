@@ -41,7 +41,7 @@ public class NewClientController extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-
+        /*
         authentication = FirebaseAuth.getInstance();
 
         //start fire base
@@ -59,7 +59,7 @@ public class NewClientController extends AppCompatActivity {
                 }
             }
         };
-
+        */
 
         registerButton = (Button) findViewById(R.id.register);
         userEmail = (EditText) findViewById(R.id.email);
@@ -72,49 +72,16 @@ public class NewClientController extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                int selectId = gender.getCheckedRadioButtonId();
+                Intent intent = new Intent(NewClientController.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                return;
 
-                final RadioButton radioButton = (RadioButton) findViewById(selectId);
-
-
-                if(radioButton.getText() == null) {
-
-                    return;
-                }
-
-                final String email = userEmail.getText().toString();
-                final String password = userPassword.getText().toString();
-                final String name = userName.getText().toString();
+                //final String email = userEmail.getText().toString();
+                //final String password = userPassword.getText().toString();
+                //final String name = userName.getText().toString();
 
 
-                authentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener(NewClientController.this, new OnCompleteListener<AuthResult>() {
-
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-
-
-                        String userId = authentication.getCurrentUser().getUid();
-
-
-                            DatabaseReference currentUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
-                            Map userInfo = new HashMap<>();
-
-                            userInfo.put("name", name);
-                            userInfo.put("sex", radioButton.getText().toString());
-                            userInfo.put("profileImageUrl", "default");
-
-                            currentUserDb.updateChildren(userInfo);
-                        System.out.println("------------------------22222222---------------------------");
-                        //}
-
-                        Intent intent = new Intent(NewClientController.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                        return;
-
-                    }
-                });
             }
         });
     }
@@ -123,14 +90,13 @@ public class NewClientController extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------1---------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        authentication.addAuthStateListener(firebaseAuthStateListener);
+
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------2---------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        authentication.removeAuthStateListener(firebaseAuthStateListener);
+
     }
+
 }

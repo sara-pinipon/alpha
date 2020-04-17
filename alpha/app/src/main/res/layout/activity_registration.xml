@@ -73,14 +73,18 @@
         android:layout_marginRight="100dp"
         android:textColorHint="@color/white"/>
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="50dp"
         android:layout_marginRight="100dp"
-        android:layout_marginBottom="40dp"
-        android:text="SOON"
-        android:textColor="@color/white" />
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="0dp"
+        android:text="Login"
+        android:id="@+id/register"
+        android:textColor="@color/red2"
+        android:background="@drawable/button_bg_rounded_corners"
+        />
+
 </LinearLayout>

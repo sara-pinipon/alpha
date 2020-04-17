@@ -45,20 +45,53 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void populateArray() {
-        UserCard sara = new UserCard("1", "");
-        UserCard diogo = new UserCard("2", "");
-        UserCard bernardo = new UserCard("3", "");
-        UserCard paulo = new UserCard("4", "");
-        UserCard xavier = new UserCard("5", "");
-        UserCard soraia = new UserCard("6", "");
-        UserCard jojo = new UserCard("7", "");
-        queuecard.add(sara);
-        queuecard.add(diogo);
+        UserCard andre = new UserCard("1", "");
+        UserCard bernardo = new UserCard("2", "");
+        UserCard beruno = new UserCard("3", "");
+        UserCard claudia = new UserCard("4", "");
+        UserCard diogo = new UserCard("5", "");
+        UserCard Evandro = new UserCard("6", "");
+        UserCard fabio = new UserCard("7", "");
+        UserCard francisco = new UserCard("8", "");
+        UserCard hugo = new UserCard("9", "");
+        UserCard jaime = new UserCard("10", "");
+        UserCard jojo = new UserCard("11", "");
+        UserCard julio = new UserCard("12", "");
+        UserCard miguel = new UserCard("13", "");
+        UserCard gustavo = new UserCard("14", "");
+        UserCard paulo = new UserCard("15", "");
+        UserCard pedro = new UserCard("16", "");
+        UserCard rita = new UserCard("17", "");
+        UserCard ricardo = new UserCard("18", "");
+        UserCard ruben = new UserCard("19", "");
+        UserCard sara = new UserCard("20", "");
+        UserCard soraia = new UserCard("21", "");
+        UserCard xavier = new UserCard("22", "");
+
+
+        queuecard.add(jojo);
+        queuecard.add(andre);
         queuecard.add(bernardo);
+        queuecard.add(beruno);
+        queuecard.add(claudia);
+        queuecard.add(diogo);
+        queuecard.add(Evandro);
+        queuecard.add(fabio);
+        queuecard.add(francisco);
+        queuecard.add(gustavo);
+        queuecard.add(hugo);
+        queuecard.add(jaime);
+        queuecard.add(julio);
+        queuecard.add(miguel);
         queuecard.add(paulo);
-        queuecard.add(xavier);
+        queuecard.add(pedro);
+        queuecard.add(ricardo);
+        queuecard.add(rita);
+        queuecard.add(ruben);
+        queuecard.add(sara);
         queuecard.add(soraia);
-        //queuecard.add(jojo);
+        queuecard.add(xavier);
+
     }
 
 
