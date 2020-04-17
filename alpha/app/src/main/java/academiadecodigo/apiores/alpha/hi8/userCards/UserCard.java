@@ -5,9 +5,12 @@ public class UserCard {
     private String userId;
     private String name;
 
-    public UserCard(String userId, String name) {
+    private int cardId;
+
+    public UserCard(String userId, String name, int cardId) {
         this.userId = userId;
         this.name = name;
+        this.cardId = cardId;
     }
 
 
@@ -25,5 +28,14 @@ public class UserCard {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+
+    public int getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(int cardId) {
+        this.cardId = cardId;
     }
 }

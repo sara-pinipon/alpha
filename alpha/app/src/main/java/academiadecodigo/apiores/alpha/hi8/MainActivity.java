@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,6 +22,7 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import academiadecodigo.apiores.alpha.hi8.userCards.ArrayUserCard;
@@ -42,55 +42,66 @@ public class MainActivity extends AppCompatActivity {
 
     private String sex;
     private String oppositeSex;
+    public static List<Integer> userIdSet = new ArrayList<>();
 
+    public ArrayUserCard getArrayAdapter() {
+        return arrayAdapter;
+    }
 
     private void populateArray() {
-        UserCard andre = new UserCard("1", "");
-        UserCard bernardo = new UserCard("2", "");
-        UserCard beruno = new UserCard("3", "");
-        UserCard claudia = new UserCard("4", "");
-        UserCard diogo = new UserCard("5", "");
-        UserCard Evandro = new UserCard("6", "");
-        UserCard fabio = new UserCard("7", "");
-        UserCard francisco = new UserCard("8", "");
-        UserCard hugo = new UserCard("9", "");
-        UserCard jaime = new UserCard("10", "");
-        UserCard jojo = new UserCard("11", "");
-        UserCard julio = new UserCard("12", "");
-        UserCard miguel = new UserCard("13", "");
-        UserCard gustavo = new UserCard("14", "");
-        UserCard paulo = new UserCard("15", "");
-        UserCard pedro = new UserCard("16", "");
-        UserCard rita = new UserCard("17", "");
-        UserCard ricardo = new UserCard("18", "");
-        UserCard ruben = new UserCard("19", "");
-        UserCard sara = new UserCard("20", "");
-        UserCard soraia = new UserCard("21", "");
-        UserCard xavier = new UserCard("22", "");
+        UserCard jojo = new UserCard("1", "jojo",1);
+        UserCard beruno = new UserCard("2", "beruno",2);
+        UserCard hugo = new UserCard("3", "hugo",3);
+        UserCard miguel = new UserCard("4", "miguel",4);
+        UserCard Evandro = new UserCard("6", "evandro",5);
+        UserCard pedro = new UserCard("16", "pedro",6);
+        UserCard fabio = new UserCard("7", "fabio",7);
+        UserCard bernardo = new UserCard("2", "bernardo",8);
+        UserCard andre = new UserCard("1", "andre",9);
+        UserCard gustavo = new UserCard("14", "gustavo",10);
+        UserCard francisco = new UserCard("8", "francisco",11);
+        UserCard sara = new UserCard("9", "sara",12);
+        UserCard diogo = new UserCard("5", "diogo",13);
+        UserCard soraia = new UserCard("21", "soraia",14);
+        UserCard julio = new UserCard("12", "julio",15);
+        UserCard rita = new UserCard("17", "rita",16);
+        UserCard ricardo = new UserCard("18", "ricardo",17);
+        UserCard jaime = new UserCard("10", "jaime",18);
+        UserCard ruben = new UserCard("19", "ruben",19);
+        UserCard claudia = new UserCard("4", "claudia",20);
+        UserCard xavier = new UserCard("22", "xavier",21);
+        UserCard paulo = new UserCard("15", "paulo",22);
 
 
         queuecard.add(jojo);
-        queuecard.add(andre);
-        queuecard.add(bernardo);
         queuecard.add(beruno);
-        queuecard.add(claudia);
-        queuecard.add(diogo);
-        queuecard.add(Evandro);
-        queuecard.add(fabio);
-        queuecard.add(francisco);
-        queuecard.add(gustavo);
         queuecard.add(hugo);
-        queuecard.add(jaime);
-        queuecard.add(julio);
         queuecard.add(miguel);
-        queuecard.add(paulo);
+        queuecard.add(Evandro);
         queuecard.add(pedro);
-        queuecard.add(ricardo);
-        queuecard.add(rita);
-        queuecard.add(ruben);
+        queuecard.add(fabio);
+        queuecard.add(bernardo);
+        queuecard.add(andre);
+        queuecard.add(gustavo);
+        queuecard.add(francisco);
         queuecard.add(sara);
+        queuecard.add(diogo);
         queuecard.add(soraia);
+        queuecard.add(julio);
+        queuecard.add(rita);
+        queuecard.add(ricardo);
+        queuecard.add(jaime);
+        queuecard.add(ruben);
+        queuecard.add(claudia);
         queuecard.add(xavier);
+        queuecard.add(paulo);
+
+
+
+
+        for (int i = 0; i < 23; i++){
+            userIdSet.add(i);
+        }
 
     }
 
@@ -101,8 +112,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         auth = FirebaseAuth.getInstance();
-
-        //sexChoice();
 
         queuecard = new ArrayList<UserCard>();
         populateArray();
@@ -128,13 +137,24 @@ public class MainActivity extends AppCompatActivity {
             public void onLeftCardExit(Object dataObject) {
 
                 Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
+
                 arrayAdapter.setNum();
+
+
+
+                //arrayAdapter.notifyDataSetChanged();
+
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
                 arrayAdapter.setNum();
+
+
+
+                //arrayAdapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -220,40 +240,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void getOppositeChoice() {
-
-        DatabaseReference databaseOpposite = FirebaseDatabase.getInstance().getReference().child("Users").child(oppositeSex);
-        databaseOpposite.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                if(dataSnapshot.exists()) {
-
-                    UserCard userCard = new UserCard(dataSnapshot.getKey(), dataSnapshot.child("name").getKey().toString());
-
-                    queuecard.add(userCard);
-                    arrayAdapter.notifyDataSetChanged();
-               }
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-
-    }
 
 
     public void logout(View view) {
