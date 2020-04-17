@@ -22,7 +22,7 @@
         android:layout_width="228dp"
         android:layout_height="349dp"
         android:layout_gravity="center"
-        app:srcCompat="@mipmap/Logo_transparente"
+        app:srcCompat="@mipmap/logotransparente"
         android:theme="@style/AppTheme"
         android:singleLine="true"
         />
@@ -39,7 +39,7 @@
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:textColorHint="@color/white"
         />
     <EditText

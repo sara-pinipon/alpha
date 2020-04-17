@@ -51,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
         UserCard paulo = new UserCard("4", "");
         UserCard xavier = new UserCard("5", "");
         UserCard soraia = new UserCard("6", "");
-        UserCard jojo = new UserCard("8", "");
+        UserCard jojo = new UserCard("7", "");
         queuecard.add(sara);
         queuecard.add(diogo);
         queuecard.add(bernardo);
         queuecard.add(paulo);
         queuecard.add(xavier);
         queuecard.add(soraia);
-        queuecard.add(jojo);
+        //queuecard.add(jojo);
     }
 
 
@@ -95,11 +95,13 @@ public class MainActivity extends AppCompatActivity {
             public void onLeftCardExit(Object dataObject) {
 
                 Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
+                arrayAdapter.setNum();
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
                 Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
+                arrayAdapter.setNum();
             }
 
             @Override
