@@ -17,6 +17,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AccessController extends AppCompatActivity {
 
     private Button loginButton;
@@ -64,19 +67,29 @@ public class AccessController extends AppCompatActivity {
 
 
 
-                if(!email.equals("admin") || !password.equals("admin")){
-                    Toast.makeText(AccessController.this, "sign in error", Toast.LENGTH_SHORT).show();
-                    System.out.println("-----------------------------ifffff_________________________________");
+                if(email.equals("admin") && password.equals("admin")){
+                    Intent intent = new Intent(AccessController.this, MainActivity.class);
+                    startActivity(intent);
+
+                    finish();
                     return;
                 }
 
-                System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<aaaaaaaaaaaaaaaaaaa>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                if(NewClientController.loginMap.containsKey(email) && NewClientController.loginMap.get(email).equals(email)) {
+                    Intent intent = new Intent(AccessController.this, MainActivity.class);
+                    startActivity(intent);
 
-                Intent intent = new Intent(AccessController.this, MainActivity.class);
-                startActivity(intent);
-                System.out.println("-----<<<-<-<-<<-<--<-<-<-<---_>>_<->-<_>_>-<-<-->_>-<->__>->_");
-                finish();
-                return;
+                    finish();
+                    return;
+
+                } else {
+                    Toast.makeText(AccessController.this, "sign in error", Toast.LENGTH_SHORT).show();
+
+                    return;
+                }
+
+
+
 
 
         }

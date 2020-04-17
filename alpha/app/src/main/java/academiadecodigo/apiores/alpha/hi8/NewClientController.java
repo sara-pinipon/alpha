@@ -29,6 +29,8 @@ public class NewClientController extends AppCompatActivity {
     private Button registerButton;
     private EditText userEmail, userPassword, userName;
 
+    public static Map<String, String> loginMap = new HashMap();
+
     private RadioGroup gender;
 
     private FirebaseAuth authentication;
@@ -37,7 +39,7 @@ public class NewClientController extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------inicio---------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
@@ -72,14 +74,24 @@ public class NewClientController extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                final String email = userEmail.getText().toString();
+                final String password = userPassword.getText().toString();
+                final String name = userName.getText().toString();
+
+                if (loginMap.containsKey(email)) {
+                    Toast.makeText(NewClientController.this, "Email not available", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                    
+                loginMap.put(email, password);
+
+
                 Intent intent = new Intent(NewClientController.this, MainActivity.class);
                 startActivity(intent);
                 finish();
                 return;
 
-                //final String email = userEmail.getText().toString();
-                //final String password = userPassword.getText().toString();
-                //final String name = userName.getText().toString();
+
 
 
             }
